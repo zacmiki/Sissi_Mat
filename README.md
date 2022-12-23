@@ -33,4 +33,4 @@ I just added a new notebook which allows ...
 
 ## Contact 📬
 
-You can contact me by sending an email to: jaczac2002@gmail.com or you can open a issue if you have any or even contribute to this project if you feel like it.
+You can contact me by sending an email to: miczac@gmail.com or you can open a issue if you have any or even contribute to this project if you feel like it.
