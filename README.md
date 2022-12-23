@@ -2,7 +2,7 @@
     Sissi_Mat
 </h1>
 
-![showcase](.assets/showcase.png)
+<!-- ![showcase](.assets/showcase.png) -->
 
 <p align="center">
     Short motivation for the project
