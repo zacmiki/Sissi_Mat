@@ -226,7 +226,7 @@ def loadSSC(fileName):
     import os
     
     dbs = opusFC.listContents(fileName)
-    print(f"File {os.path.basename(fileName)} Loaded, dbs, "\n")
+    print(f"File {os.path.basename(fileName)} Loaded {dbs}")
     
     for item in range(len(dbs)): 
         if (dbs[item][0]) == 'SSC': 
