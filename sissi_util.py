@@ -44,7 +44,7 @@ def getListOfFiles(dirName):
 def allOpusFiles(dirName):
     '''Returns a list with all the OPUS files in that dir and all subdirs'''
     import opusFC
-    allFiles = getListOfFiles_test(dirName)
+    allFiles = getListOfFiles(dirName)
     opusFiles = list()
 
     for entry in allFiles:
