@@ -26,27 +26,41 @@ parValues(fileName) -- returns the meaningful Parameters of the OPUS file passed
 """
 #------------------------------------------
 def getListOfFiles(dirName):
-    '''Returns a list of all files in the given directory "dirName"'''
-    import glob
     import os
-    # Use the glob function to create a list of file paths that match a specified pattern
-    # The pattern is the directory name followed by **/*, which means search for all files and directories
-    # in the specified directory and all its subdirectories
-    # Use the os.path.join function to combine the directory name with the pattern
-    # Set the recursive parameter to True to search for files in subdirectories as well
-    return glob.glob(os.path.join(dirName, '**/*'), recursive=True)
+
+    # Create an empty list to store the names of the files
+    fileList = []
+
+    # Use the os.walk function to iterate over the files and directories in the specified directory
+    for root, dirs, files in os.walk(dirName):
+        # Add the names of the files in the current directory to the file list
+        for file in files:
+            fileList.append(os.path.join(root, file))
+
+    return fileList
 
 #------------------------------------------
 
 def allOpusFiles(dirName):
     '''Returns a list with all the OPUS files in that dir and all subdirs'''
     import opusFC
-    allFiles = getListOfFiles(dirName)
+    allFiles = getListOfFiles_test(dirName)
     opusFiles = list()
 
     for entry in allFiles:
         if opusFC.isOpusFile(entry):
             opusFiles.append(entry)
+
+    return opusFiles
+
+#------------------------------------------
+
+def test_opus(all_files):
+    '''Returns a list with all the OPUS files in that dir and all subdirs'''
+    import opusFC
+
+    # list comprehension to create a list with just the opus_files
+    opusFiles = [entry for entry in all_files if opusFC.isOpusFile(entry)]
 
     return opusFiles
 
