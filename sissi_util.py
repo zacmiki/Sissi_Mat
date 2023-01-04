@@ -25,6 +25,7 @@ parValues(fileName) -- returns the meaningful Parameters of the OPUS file passed
 @author: miczac
 """
 #------------------------------------------
+
 def getListOfFiles(dirName):
     import os
 
@@ -43,26 +44,16 @@ def getListOfFiles(dirName):
 
 def allOpusFiles(dirName):
     '''Returns a list with all the OPUS files in that dir and all subdirs'''
-    import opusFC
-    allFiles = getListOfFiles(dirName)
-    opusFiles = list()
-
-    for entry in allFiles:
-        if opusFC.isOpusFile(entry):
-            opusFiles.append(entry)
-
-    return opusFiles
-
-#------------------------------------------
-
-def test_opus(all_files):
-    '''Returns a list with all the OPUS files in that dir and all subdirs'''
+    import os
     import opusFC
 
-    # list comprehension to create a list with just the opus_files
-    opusFiles = [entry for entry in all_files if opusFC.isOpusFile(entry)]
+    # Get a list of all files in the specified directory and its subdirectories
+    all_files = getListOfFiles(dirName)
 
-    return opusFiles
+    # Use a list comprehension to create a list of the names of the non-empty Opus files
+    opus_files = [file for file in all_files if os.path.getsize(file) > 0 and opusFC.isOpusFile(file)]
+
+    return opus_files
 
 #------------------------------------------
 
@@ -206,7 +197,6 @@ def loadandgraph(fileName, graphornot = None, paramornot = None):
 
     dbs = opusFC.listContents(fileName)
     print(f"\nFile {os.path.basename(fileName)} Loaded\n")
-    print(dbs, "\n")
 
     for item in range(len(dbs)):
         if (dbs[item][0]) != 'SIFG':
